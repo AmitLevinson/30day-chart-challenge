@@ -14,7 +14,7 @@ ggplot(pm, aes(label = gender, values = 1))+
   scale_color_manual(name = NULL, values = c("#6A0DAD", "gray60")) +
   scale_label_pictogram(name = NULL, values = c("female", "male"), labels = c("F", "M"))+
   geom_text(aes(x = 5.1, y = 1.18), label= "Golda Meir\nTenure: 1969-1974", hjust = 0, size = 3, color = "#6A0DAD", family = "Raleway Medium")+
-  geom_text(aes(x = 6, y = 0.5), label= "Viz: Amit_Levinson", hjust = 0, size = 3, color = "gray55", family = "Raleway Medium")+
+  geom_text(aes(x = 5.8, y = 0.5), label= "Viz: Amit_Levinson", hjust = 0, size = 3, color = "gray55", family = "Raleway Medium")+
   geom_segment(aes(y = 1.1, yend = 1.21, x = 5, xend = 5), alpha = 0.3, color = "#6A0DAD", linetype = "dashed", size = 0.5)+
   labs(title = "Israel has exprienced only one <span style='color:#6A0DAD'><b>female</b></span> prime minister")+
   theme_void()+
