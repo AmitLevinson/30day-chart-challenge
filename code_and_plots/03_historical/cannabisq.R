@@ -10,8 +10,8 @@ survey <- read_xlsx("data/03/cannabis-1991-clean.xlsx") %>%
     Q1 = ifelse(Q1 == "Don't know/ Refuse to answer", "Don't know/\nRefuse to answer", Q1),
     q1 = factor(Q1, levels = c("Extremely severe harm",
                                   "Severe harm",
-                                  "Light harm",
-                                  "Doesn't harm at all",
+                                  "Marginal harm",
+                                  "Not at all",
                                   "Don't know/\nRefuse to answer")))
 
 
@@ -37,10 +37,10 @@ survey <- read_xlsx("data/03/cannabis-1991-clean.xlsx") %>%
   ))
 
 # Add background
-ggbackground(p, background = "data/03/paper-medium.jpg")
+ggbackground(p, background = "data/03/paper-smaller.jpg")
 
 
-ggsave("code_and_plots/03_historical/survey.png", width =8, height = 6)
+ggsave("code_and_plots/03_historical/survey-smaller.png", width =8, height = 6)
 
 # Original questions in Hebrew:
 # האם, לדעתך, שימוש בסמים הוא פגיעה בחברה הישראלית?
