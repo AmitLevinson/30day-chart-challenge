@@ -44,4 +44,4 @@ ggsave("code_and_plots/03_historical/survey.png", width =8, height = 6)
 
 # Original questions in Hebrew:
 # האם, לדעתך, שימוש בסמים הוא פגיעה בחברה הישראלית?
-# In your opionion, is the use of drugs a harm of the Israeli society?
+# In your opinion, does use of drugs harm the Israeli society?
