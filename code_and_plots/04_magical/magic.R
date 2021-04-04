@@ -39,14 +39,16 @@ time_referenced <- cmnts %>%
 time_referenced %>% 
   ggplot(aes(x = time_numeric))+
   geom_histogram(bins = 50, fill = "gray35", color = NA )+
-  scale_x_continuous(name = "Video length (minutes)", breaks = seq(0,840, 120), labels = c("0:00", seq(2,12,2), "14:00"))+
+  scale_x_continuous(name = "Video length (minutes)\n", breaks = seq(0,840, 120), labels = c("0:00", seq(2,12,2), "14:00"))+
   labs(title = "Highlights of a Magic Trick Video <span style='font-family: \"Font Awesome 5 Free Solid\"'>&#xf0d0;</span>",
-       subtitle = "Bars represent frequency of comments referencing a time frame in a magick trick video on YouTube. The analysis is based on ~18,000\ncomments from the video \"BEST Magic Show in the world - Genius Rubik\'s Cube Magician America\'s Got Talent\"",
-       y = "Number of references")+
+       subtitle = "Bars represent frequency of comments referencing a time frame in a magick trick video. The analysis is based on ~18,000\ncomments from the video \"BEST Magic Show in the world - Genius Rubik\'s Cube Magician America\'s Got Talent\" on YouTube",
+       y = "Number of references",
+       caption = "Data: YouTube | Viz: Amit_Levinson")+
   theme(
     text = element_text(family = "Leelawadee UI"),
     plot.title = element_markdown(family = "Quite Magical", size = 24),
     plot.subtitle = element_text(size = 10),
+    plot.caption = element_text(color = "gray25", size = 8, hjust = 0),
     axis.title = element_text(color = "gray25", size = 11),
     axis.text = element_text(color = "gray10", size = 9),
     axis.ticks = element_blank(),
