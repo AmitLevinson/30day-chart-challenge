@@ -37,7 +37,7 @@ survey <- read_xlsx("data/03/cannabis-1991-clean.xlsx") %>%
   ))
 
 # Add background
-ggbackground(p, background = "data/03/paper.jpg")
+ggbackground(p, background = "data/03/paper-medium.jpg")
 
 
 ggsave("code_and_plots/03_historical/survey.png", width =8, height = 6)
