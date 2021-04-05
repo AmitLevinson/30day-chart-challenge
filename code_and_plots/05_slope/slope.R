@@ -50,13 +50,16 @@ ggplot(data = polyarchy_decade, aes(x = year, y = v2x_polyarchy, color = bar_col
   theme(
     text = element_text(family = "Lato"),
     plot.title = element_text(family = "Playfair Display SemiBold", size = 15),
-    plot.subtitle = element_markdown(size = 10),
+    plot.subtitle = element_markdown(size = 10, lineheight = 1.15),
     plot.caption = element_text(size = 8, hjust = 0.5, color = "gray45"),
     panel.grid = element_blank(),
     axis.title.y = element_markdown(color = "gray25"),
     axis.text.y = element_text(size = 8, color = "gray55"),
     axis.text.x = element_text(size = 12, family = "Playfair Display"),
-    plot.margin = margin(12,4,4,4, "mm")
+    plot.margin = margin(7,4,4,4, "mm"),
+    panel.background = element_rect(fill = "white", color = NA),
+    plot.background = element_rect(fill = "white", color = NA)
   )
 
 ggsave("code_and_plots/05_slope/vdem.png", width = 9, height = 8)
+
