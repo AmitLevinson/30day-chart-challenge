@@ -1,8 +1,6 @@
 library(tidyverse)
 library(ggtext)
-library(ggtext)
 library(extrafont)
-library(ggfx)
 
 # Set to recognize hebrew characters
 # Sys.setlocale("LC_ALL", "Hebrew")
@@ -52,16 +50,11 @@ letters_split <- names_split %>%
 ggplot(letters_split)+
 geom_col(aes(x = heletters, y = 1), fill = "gray90")+
   # Helps add text above bar plot
-  as_reference(
-    geom_col(aes(x = heletters, y = letter_prop), fill = "#00528b", color =NA),
-      id = "text")+
-  with_blend(
-    geom_text(aes(x = heletters, y= 0, label = heletters, size = letter_freq), size = 8, vjust = -0.035, color = "white", family = "Open Sans Hebrew", fontface = "bold"),
-    bg_layer = "text",
-    blend_type = "atop")+
+    geom_col(aes(x = heletters, y = letter_prop), fill = "#00528b", color =NA)+
+    geom_text(aes(x = heletters, y= 0, label = heletters, size = letter_freq), size = 8, vjust = -0.035, color = "white", family = "Open Sans Hebrew", fontface = "bold")+
   labs(
     title = "Letter Frequency in Hebrew Names",
-    subtitle = "The Israeli Population and Immigration Authority published a list of distinct registered Hebrew first names. The Hebrew\nlanguage has a total of 22 letters, while some of them appear differently at the end of a word. The plot shows the liklihood\nof a letter appearing at least once in a given name.",
+    subtitle = "The Israeli Population and Immigration Authority published a list of distinct registered Hebrew first names. The Hebrew\nlanguage has a total of 22 letters, while some of them appear differently at the end of a word. The plot shows the likleihood\nof a letter appearing at least once in a given name.",
     caption = "Data: Israelן Population and Immigration Authority | Viz: Amit_Levinson",
     y = "% of names the letter appears in\n")+
   # Reverse the factors, otherwise it's all mixed up
