@@ -21,8 +21,8 @@ file_info_df <- map_dfr(file_info, ~ tibble(created = .x[["ctime"]]),
       str_detect(script, "TidyTuesday") ~ "TidyTuesday",
       str_detect(script, "amitlevinson.com|draft") ~ "Website",
       str_detect(script, "30") ~ "Various\nchallenges",
-      str_detect(script, "Thesis|JO|CV") ~ "Thesis / Work",
-      str_detect(script, "Courses|sql") ~ "Courses / Learning",
+      str_detect(script, "Thesis|JO|CV") ~ "Thesis/ Work",
+      str_detect(script, "Courses|sql") ~ "Learning",
       TRUE ~ "Other",
     )
   )  
@@ -40,19 +40,19 @@ file_info_clean <- file_info_df %>%
 group_labels <- file_info_clean %>% 
   group_by(category) %>% 
   filter(created == max(created)) %>% 
-  mutate(vjust = ifelse(category == "Various\nchallenges", 1, 0.5))
+  mutate(vjust = ifelse(str_detect(category, "Various|Learning"), 1, 0.5))
 
 
 ggplot(data = file_info_clean, aes(x = created, y= cum_scripts, color = category, group = category))+
   geom_path(size =0.6)+
   geom_point(data = group_labels,aes(x = created, y = cum_scripts), size = 0.8)+
-  geom_text(data = group_labels, aes(x = created, y = cum_scripts, label = category, vjust = vjust), hjust = -0.02,  nudge_x = 3600*24*1, size =3, family = "Raleway Medium")+
+  geom_text(data = group_labels, aes(x = created, y = cum_scripts, label = category, vjust = vjust), hjust = -0.02,  nudge_x = 3600*24*1, size =4, family = "Raleway Medium", lineheight = 0.8)+
   coord_cartesian(clip = "off", expand = TRUE)+
   guides(color = "none")+
   scale_x_datetime(name = "Script creation date", breaks = "3 months", date_labels = "%b %y", expand = c(0, 3600*24*50))+
   scale_y_continuous(name = "Commulative scripts", breaks = seq(0, 100, 20))+
   labs(title = "My R Scripts Creation History",
-       subtitle = "Plot shows the creation history of R/Rmd scripts located on my computer: drafts, random scripts and files uploaded to GitHub",
+       subtitle = "Plot shows the creation history of R/Rmd scripts located on my computer: drafts, random snippets and files uploaded to GitHub.",
        caption = "Data: Personal Scripts | Viz: Amit_Levinson")+
   theme_minimal()+
   theme(
@@ -62,9 +62,9 @@ ggplot(data = file_info_clean, aes(x = created, y= cum_scripts, color = category
     panel.grid.minor.y = element_blank(),
     plot.title.position = "plot",
     plot.title = element_text(size = 23, family = "Bodoni MT"),
-    plot.subtitle = element_text(size = 12, color = "gray15"),
-    plot.caption = element_text(size = 8, color = "gray35", hjust = 1),
-    axis.title = element_text(color = "gray15", size = 10),
+    plot.subtitle = element_text(size = 13, color = "gray15"),
+    plot.caption = element_text(size = 9, color = "gray35", hjust = 1),
+    axis.title = element_text(color = "gray15", size = 11),
     axis.text = element_text(color = "gray25", size = 10),
     plot.margin = margin(5,3,3,3,"mm")
   )
