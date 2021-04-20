@@ -1,6 +1,5 @@
 library(tidyverse)
 library(extrafont)
-library(extrafont)
 
 # Get all file names that might have R code
 all_files <- list.files(path = "~/", pattern ="\\.R$|.Rmd$", recursive = TRUE)
@@ -42,7 +41,6 @@ group_labels <- file_info_clean %>%
   filter(created == max(created)) %>% 
   mutate(vjust = ifelse(str_detect(category, "Various|Learning"), 1, 0.5))
 
-
 ggplot(data = file_info_clean, aes(x = created, y= cum_scripts, color = category, group = category))+
   geom_path(size =0.6)+
   geom_point(data = group_labels,aes(x = created, y = cum_scripts), size = 0.8)+
@@ -50,7 +48,7 @@ ggplot(data = file_info_clean, aes(x = created, y= cum_scripts, color = category
   coord_cartesian(clip = "off", expand = TRUE)+
   guides(color = "none")+
   scale_x_datetime(name = "Script creation date", breaks = "3 months", date_labels = "%b %y", expand = c(0, 3600*24*50))+
-  scale_y_continuous(name = "Commulative scripts", breaks = seq(0, 100, 20))+
+  scale_y_continuous(name = "Cumulative number of scripts", breaks = seq(0, 100, 20))+
   labs(title = "My R Scripts Creation History",
        subtitle = "Plot shows the creation history of R/Rmd scripts located on my computer: drafts, random snippets and files uploaded to GitHub.",
        caption = "Data: Personal Scripts | Viz: Amit_Levinson")+
@@ -60,6 +58,8 @@ ggplot(data = file_info_clean, aes(x = created, y= cum_scripts, color = category
     panel.grid.major.x = element_blank(),
     panel.grid.minor.x = element_blank(),
     panel.grid.minor.y = element_blank(),
+    plot.background = element_rect(fill = "white", color = NA),
+    panel.background = element_rect(fill = "white", color = NA),
     plot.title.position = "plot",
     plot.title = element_text(size = 23, family = "Bodoni MT"),
     plot.subtitle = element_text(size = 13, color = "gray15"),
