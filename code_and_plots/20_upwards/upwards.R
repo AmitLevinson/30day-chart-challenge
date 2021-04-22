@@ -24,17 +24,18 @@ file_info_df <- map_dfr(file_info, ~ tibble(created = .x[["ctime"]]),
       str_detect(script, "Courses|sql") ~ "Learning",
       TRUE ~ "Other",
     )
-  )  
+  )
 
 file_info_clean <- file_info_df %>% 
   arrange(created) %>% 
   # there's 1-2 files that have a very weird date.
-  filter(between(format(created,"%Y"), 2019, 2022)) %>% 
+  filter(between(format(created,"%Y"), 2019, 2022)) %>%
   add_count(script, category, created) %>% 
   group_by(category) %>% 
   mutate(cum_scripts = cumsum(n),
          created = as.POSIXct(created, tz = "IDT")) %>% 
   ungroup()
+
 
 group_labels <- file_info_clean %>% 
   group_by(category) %>% 
@@ -44,12 +45,12 @@ group_labels <- file_info_clean %>%
 ggplot(data = file_info_clean, aes(x = created, y= cum_scripts, color = category, group = category))+
   geom_path(size =0.6)+
   geom_point(data = group_labels,aes(x = created, y = cum_scripts), size = 0.8)+
-  geom_text(data = group_labels, aes(x = created, y = cum_scripts, label = category, vjust = vjust), hjust = -0.02,  nudge_x = 3600*24*1, size =4, family = "Raleway Medium", lineheight = 0.8)+
+  geom_text(data = group_labels, aes(x = created, y = cum_scripts, label = category, vjust = vjust), hjust = -0.02,  nudge_x = 3600*24*1, size =3.5, family = "Raleway Medium", lineheight = 0.8)+
   coord_cartesian(clip = "off", expand = TRUE)+
   guides(color = "none")+
-  scale_x_datetime(name = "Script creation date", breaks = "3 months", date_labels = "%b %y", expand = c(0, 3600*24*50))+
+  scale_x_datetime(name = "Script creation date", breaks = "3 months", date_labels = "%b '%y", expand = c(0, 3600*24*60))+
   scale_y_continuous(name = "Cumulative number of scripts", breaks = seq(0, 100, 20))+
-  labs(title = "My R Scripts Creation History",
+  labs(title = "My History of R Scripts",
        subtitle = "Plot shows the creation history of R/Rmd scripts located on my computer: drafts, random\nsnippets and files uploaded to GitHub. Scripts are categorized to various subjects.",
        caption = "Data: Personal Scripts | Viz: Amit_Levinson")+
   theme_minimal()+
