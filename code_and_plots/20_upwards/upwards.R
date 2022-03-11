@@ -1,6 +1,6 @@
 library(tidyverse)
 library(extrafont)
-
+library(ggtext)
 # Get all file names that might have R code
 all_files <- list.files(path = "~/", pattern ="\\.R$|.Rmd$", recursive = TRUE)
 # Add the complete file
@@ -49,9 +49,9 @@ ggplot(data = file_info_clean, aes(x = created, y= cum_scripts, color = category
   coord_cartesian(clip = "off", expand = TRUE)+
   guides(color = "none")+
   scale_x_datetime(name = "Script creation date", breaks = "3 months", date_labels = "%b '%y", expand = c(0, 3600*24*60))+
-  scale_y_continuous(name = "Cumulative number of scripts", breaks = seq(0, 100, 20))+
+  scale_y_continuous(name = NULL, breaks = seq(0, 100, 20))+
   labs(title = "My History of R Scripts",
-       subtitle = "Plot shows the creation history of R/Rmd scripts located on my computer: drafts, random\nsnippets and files uploaded to GitHub. Scripts are categorized to various subjects.",
+       subtitle = "Plot shows the creation history of R/Rmd scripts located on my computer: drafts, random<br>snippets and files uploaded to GitHub. Scripts are categorized to various subjects.<br><br><span style='color:gray25; font-size:11pt'>(Cumulative number of scripts)</span>",
        caption = "Data: Personal Scripts | Viz: Amit_Levinson")+
   theme_minimal()+
   theme(
@@ -63,11 +63,12 @@ ggplot(data = file_info_clean, aes(x = created, y= cum_scripts, color = category
     panel.background = element_rect(fill = "white", color = NA),
     plot.title.position = "plot",
     plot.title = element_text(size = 23, family = "Bodoni MT"),
-    plot.subtitle = element_text(size = 12, color = "gray15"),
+    plot.subtitle = element_markdown(size = 12, color = "gray15"),
     plot.caption = element_text(size = 9, color = "gray35", hjust = 1),
-    axis.title = element_text(color = "gray15", size = 11),
+    axis.title = element_text(color = "gray25", size = 11),
+    axis.title.y = element_text(angle = 0, hjust = 1, vjust = 0.5),
     axis.text = element_text(color = "gray25", size = 10),
-    plot.margin = margin(5,3,3,3,"mm")
+    plot.margin = margin(5,3,3,5,"mm")
   )
   
 ggsave("code_and_plots/20_upwards/upwards.png", width = 11, height = 7)
