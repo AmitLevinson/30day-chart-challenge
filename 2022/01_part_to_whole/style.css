@@ -1,3 +1,46 @@
 body {
     padding: 3% 10% 5% 10%;
 }
+
+@font-face {
+   src: url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;1,300&display=swap");
+   font-family: 'Roboto', sans-serif;
+}
+
+.g-num2 {
+    fill:#e0e0e0;
+ }
+
+ .g-num {
+    fill: #990099;
+ }
+
+ .g-num:hover {
+    fill: black;
+ }
+
+ .g-labels {
+    font-family: Roboto;
+    font-weight: 300;
+    fill: #e0e0e0;
+    font-size: 10px;
+    pointer-events: none;
+ }
+
+ p {
+    font-family: Roboto;
+    font-size: 1.4em;
+    line-height: 1.1;
+ }
+
+ h1 {
+    font-family: Roboto;
+    font-size: 2em;
+    line-height: 0.1;
+ }
+
+ footer {
+    color: #585858;
+    font-size: 0.8em;
+    font-family: Roboto;
+ }
