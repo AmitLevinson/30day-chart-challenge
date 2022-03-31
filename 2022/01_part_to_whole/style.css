@@ -29,7 +29,7 @@ body {
 
  p {
     font-family: Roboto;
-    font-size: 1.4em;
+    font-size: 1.2em;
     line-height: 1.1;
  }
 
@@ -43,4 +43,13 @@ body {
     color: #585858;
     font-size: 0.8em;
     font-family: Roboto;
+ }
+
+ a {
+    text-decoration: none;
+    color: inherit;
+ }
+
+span {
+      border-bottom: 0.1em solid #990099;
  }
