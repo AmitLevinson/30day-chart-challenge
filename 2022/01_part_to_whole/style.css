@@ -21,8 +21,8 @@ body {
 
  .g-labels {
     font-family: Roboto;
-    font-weight: 300;
-    fill: #e0e0e0;
+    font-weight: 400;
+    fill: white;
     font-size: 10px;
     pointer-events: none;
  }
