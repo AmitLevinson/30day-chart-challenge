@@ -9,16 +9,12 @@ def collect_table (num):
     dfs = pd.read_html(url + str(num))
     new_df[num] = dfs[0]
     print(num)
-    time.sleep(1)
+    time.sleep(10)
     
-pd.Series(range(10,40)).apply(collect_table)
+pd.Series(range(0,937)).apply(collect_table)
 
 dat = pd.concat(new_df.values(), ignore_index=True)
 
-dat.to_csv('runner.csv',  encoding='utf-8')
+dat.to_csv('runner2.csv',  encoding='utf-8')
 
 print("script complete")
-
-# for i in range (20):
-#     print(i)
-    
