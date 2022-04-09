@@ -26,7 +26,7 @@ clean_dat <- dat %>%
 
 
 ggplot(clean_dat) +
-  geom_density_ridges(aes(x = score, y = forcats::fct_rev(age_cat), fill = higher_cat), alpha = 0.7, color = 'gray95', size = 0.1) +
+  geom_density_ridges(aes(x = score, y = forcats::fct_rev(age_cat), fill = higher_cat), alpha = 0.6, color = 'gray95', size = 0.1) +
   labs(title= 'Tel-Aviv Run 2022',
        subtitle = "~18,000 participants ran in the streets of Tel-Aviv on a rainy Friday afternoon in February 2022. Runners chose one out<br>of several age categories, either a specific age group or the <b>'General'</b> category (eventually being the biggest one).",
        x = "Run Score (HH:MM)",
@@ -45,7 +45,7 @@ ggplot(clean_dat) +
     plot.title = element_text(size = 24, face = "bold", family = "Lora"),
     plot.subtitle = element_markdown(size = 14),
     plot.caption = element_markdown(hjust = 0, size = 11, color = 'gray45', lineheight = 1.1),
-    axis.text.y = element_markdown(size = 12, color = "#353839"),
+    axis.text.y = element_markdown(size = 12, color = "#343434"),
     axis.text.x = element_markdown(size = 10),
     axis.text.y.right = element_markdown(color = 'gray55'),
     axis.title.x = element_text(vjust = -3),
