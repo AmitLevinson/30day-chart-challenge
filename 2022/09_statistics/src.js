@@ -2,16 +2,25 @@
 
 var data = [];
 
-getData();
+let solution = d3.select('.solution')
+let retry = d3.select('.retry')
+
+var arrDeviations = [0.25, 0.5, 0.75, 1]
+
+const randomDeviation = arrDeviations[Math.floor(Math.random() * arrDeviations.length)]
+console.log(randomDeviation)
+
+getData(data, arrDeviations);
+
 
 var margin = {
     top: 20,
     right: 20,
-    bottom: 30,
+    bottom: 50,
     left: 50
 },
-width = 500 - margin.left - margin.right
-height = 200 - margin.top - margin.bottom
+width = 550 - margin.left - margin.right
+height = 250 - margin.top - margin.bottom
 
 
 const svg = d3.select("#wrapper")
@@ -23,9 +32,10 @@ bounds = svg.append('g')
         .attr("transform", "translate(" +margin.left + "," +margin.top + ")");
 
     var xAccessor = d => d.q
-    
+    var yAccessor = d => d.p
+
     var xScale = d3.scaleLinear()
-        .domain(xAccessor)
+        .domain([-4,4])
         .range([0, width])
 
     var xAxisGenerator = d3.axisBottom()
@@ -36,31 +46,64 @@ bounds = svg.append('g')
         .call(xAxisGenerator)
         .style("transform", `translateY(${height}px)`)
 
-        
-    yScale = d3.scaleLinear()
+
+    var yScale = d3.scaleLinear()
         .range([height, 0 ])
-        .domain([0, 0.01])
+        .domain(d3.extent(data.map(yAccessor)))
 
+    // var yAxisGenerator = d3.axisLeft()
+    //     .scale(yScale)
 
+    // var yAxis = bounds.append('g')
+        // .call(yAxisGenerator)
+        
 
-    var yAxis = d3.axisLeft()
-        .scale(yScale)
+    var lineGenerator = d3.line()
+        .x(d => xScale(xAccessor(d)))
+        .y(d => yScale(yAccessor(d)))
 
+    DrawLine = bounds.append('path')
+        .attr("d", lineGenerator(data))
+        .attr("fill", "none")
+        .attr("stroke", "black")
+        .attr("stroke-width", 1)
 
+    // Buttons
+    const docButtons = document.getElementById('buttons')
+    docButtons.addEventListener('click', (event) => {
+        const isButton = event.target.nodeName == "BUTTON";
+        if (!isButton) {
+            return;
+        }
+        clickedVal = event.target.textContent;
+        isCorrect = event.target.textContent == randomDeviation;
+        solution.append('text')
+            .text(isCorrect ? "Correct!" : "Wrong :(")
+            .style("color", isCorrect ? "green" : "red")
+        
+    docButtons.remove()
+    retry.style("display", "block")
+        
+    })
+    
 
-
-function getData() {
-    for (var i = 0; i < 10000; i ++) {
+function getData(dataframe) {
+    for (var i = 0; i < 1000; i ++) {
         q = normal()
-        p = gaussian(q)
+        p = gaussian(q, sigma = randomDeviation)
         el = {
             "q": q,
             "p": p
         }
-        data.push(el)
+        dataframe.push(el)
     };
 
-    data.sort((x,y) => x.q-y.q)
+    dataframe.sort((x,y) => x.q-y.q)
+    dataframe.forEach((d, i) => {
+        d.rowNum = i
+        d.p = +d3.format(".4f")(d.p)
+
+    })
 }
 
 
@@ -80,10 +123,10 @@ function normal() {
 
 //taken from Jason Davies science library
 // https://github.com/jasondavies/science.js/
-function gaussian(x) {
+function gaussian(x, sigma) {
 	var gaussianConstant = 1 / Math.sqrt(2 * Math.PI),
 		mean = 0,
-    	sigma = 1;
+    	sigma = sigma;
 
     x = (x - mean) / sigma;
     return gaussianConstant * Math.exp(-.5 * x * x) / sigma;

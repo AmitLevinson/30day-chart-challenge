@@ -1,4 +1,36 @@
 body {
-    overflow: hidden;
-    padding: 10% 8% 10% 2%;
+    /* overflow: hidden; */
+    margin: 2% 10% 2% 10%;
+    background-color: #E6E6FA;	
+    font-family: 'Anek Odia', sans-serif;
+
 }
+
+h1 {
+    font-size: 2em;
+    font-family: 'Merriweather', serif;
+}
+
+P {
+    font-size: 1.2em;
+}
+
+.but {
+    border: 1px solid black;
+    background-color: white;
+    color: black;
+    padding: 4px 12px;
+    margin: 0 5px 0 0;
+    font-size: 16px;
+  }
+
+
+
+.retry {
+    display: none;
+}
+
+.tick line {
+    stroke: none;
+}
+    

@@ -5,12 +5,26 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
+    <script src="https://unpkg.com/d3-simple-slider"></script>
+    <style>@import url('https://fonts.googleapis.com/css2?family=Anek+Odia:wght@300;400&family=Merriweather:wght@700&display=swap');</style>
     <title>Document</title>
 
 </head>
 <body>
+    <h1>Guess the Deviation</h1>
+    <p>With a mean of 0, can you guess the <b>distribution's deviation?</b></p>
+        <div id="buttons">
+            <button class="but deviation">0.25</button>
+            <button class="but deviation">0.5</button>
+            <button class="but deviation">0.75</button>
+            <button class="but deviation">1</button>
+        </div>
+        <button class="but retry" onClick = 'window.location.reload()'>Try Again</button>
+    <div class="solution"><br></div>
     <div id="wrapper"></div>
+    <!-- <div id='slider'></div> -->
 </body>
-<script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
+
 <script src="src.js"></script>
 </html>
