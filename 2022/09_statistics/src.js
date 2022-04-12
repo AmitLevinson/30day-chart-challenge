@@ -8,7 +8,7 @@ let retry = d3.select('.retry')
 var arrDeviations = [0.25, 0.5, 0.75, 1]
 
 const randomDeviation = arrDeviations[Math.floor(Math.random() * arrDeviations.length)]
-console.log(randomDeviation)
+console.log(`You hacker! Well then, here's your answer: ${randomDeviation}`)
 
 getData(data, arrDeviations);
 
