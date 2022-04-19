@@ -10,10 +10,8 @@ library(forcats)
 
 pop_raw <- read_xlsx(here("data", "population_madaf_2019_1.xlsx"), sheet = 2, skip = 13)
 names(pop_raw) <- c("code", "name_he", "name_en", "total", "jews_and_other", "others", "jews", "arabs")
-# isr_nafot <- st_read(here("data", "israel-borders", "israel_borders.shp"))
 shp_path <- paste0("data/", list.files(here("data"), recursive = TRUE, pattern = "\\.shp$"))
 
-# shp_path <- list.files(pattern = "muni_il.shp", recursive = TRUE)
 cities <- tribble(
   ~shp_city, ~pop_city,
   'Bnei Berak', 'Bene Beraq',
@@ -75,7 +73,6 @@ kmpoints <- pmap_dfr(pop_area_data, generate_points) %>%
 
 
 ggplot(data = kmpoints, aes(group = city)) +
-  # geom_circle(aes(x0 = 0, y0 = 0, r = 1))+
   geom_point(aes(x= x, y = y), size = .2) +
   facet_wrap(~ city, nrow = 2) +
   labs(
