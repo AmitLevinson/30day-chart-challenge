@@ -1,5 +1,54 @@
 # 30day-chart-challenge
-A repository containing several of my participations in the #30DayChartChallenge.
+A repository containing several of my participation attempts in the #30DayChartChallenge in 2021 & 2022.
+
+Check out more information about the challenge on [its website](https://30daychartchallenge.org/), and other challenges I participated in on the [data visualization section on my website.](https://amitlevinson.com/data-visualization/)
+
+
+
+#### Part to whole
+[code](https://github.com/AmitLevinson/30day-chart-challenge/tree/main/2022/01_part_to_whole) 
+
+<img src="https://github.com/AmitLevinson/30day-chart-challenge/blob/main/2022/01_part_to_whole/01.png?raw=true" width = "700">
+
+
+
+#### Pictogram
+[code](https://github.com/AmitLevinson/30day-chart-challenge/blob/main/2022/02_pictogram/02.R) 
+
+<img src="https://github.com/AmitLevinson/30day-chart-challenge/blob/main/2022/02_pictogram/02.png?raw=true" width = "700">
+
+
+
+#### Physical
+[code](https://github.com/AmitLevinson/30day-chart-challenge/tree/main/2022/07_physical) 
+
+<img src="https://github.com/AmitLevinson/30day-chart-challenge/blob/main/2022/07_physical/run.png?raw=true" width = "700">
+
+
+
+
+
+#### Statistics 
+
+[code](https://github.com/AmitLevinson/30day-chart-challenge/tree/main/2022/09_statistics) 
+
+<img src="https://github.com/AmitLevinson/30day-chart-challenge/blob/main/2022/09_statistics/deviation.png?raw=true" width = "700" alt ='Image of a histogram with the text "guess the deviation" inviting participants to guess the deviation.'>
+
+
+
+
+<div class="viz">
+#### Circular <a href="https://github.com/AmitLevinson/30day-chart-challenge/blob/main/2022/11_circular/pop-km.R" target="_blank" rel="noopener"><i class="fas fa-code"></i></a>
+
+<img src="https://github.com/AmitLevinson/30day-chart-challenge/blob/main/2022/11_circular/density.png?raw=true" width = "700" alt ='Points scattered in circles representing population density across israeli cities'>
+</div>
+
+<br>
+<br>
+
+
+
+## 2021
 
 
 ### Day 20: Upwards
