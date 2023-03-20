@@ -139,3 +139,21 @@ table {
 body {
   padding: 6px;
 }
+
+
+#percentage {
+  text-decoration: underline;
+  color: #32408F;
+  font-weight: bold;
+  text-decoration-thickness: 3px;
+}
+
+h1 {
+  font-size: 25px;
+}
+
+#app {
+  padding-top: 10%;
+  display: block;
+  text-align: center;
+}

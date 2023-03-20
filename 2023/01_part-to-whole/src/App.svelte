@@ -1,19 +1,16 @@
 
 <script>
   import { onMount } from 'svelte';
-  import {spring, tweened} from 'svelte/motion';
   import Pie from './lib/Pie.svelte';
   /* inspired form https://svelte.dev/repl/e68bcf378d2c410d9c123fd309fc6dbb?version=3.42.4 */
 
-  let currentTime = new Date();
-  onMount(returnTime)
-  
-  let percent = 0;
   let store = 0;
-  $: store;
-  // const store = tweened(0, {duration: 1000});
-  
-  // $: store.set(actualTime.percentPassed)
+  let percentage = 0;
+  let currentTime;
+  let size = 300
+  $: store, percentage, size;
+
+  onMount(returnTime)
 
   function returnTime () {
     const now = new Date();
@@ -25,21 +22,19 @@
     const eod = new Date()
     let endOfDay = eod.setUTCHours(23,59,59,999)
   
-    currentTime = time;
+    currentTime = time.getHours() + ":" + (time.getMinutes() < 10 ? "0" + time.getMinutes() : time.getMinutes()) + ":" + time.getSeconds();
     store = (time - startOfDay) / (endOfDay - startOfDay);
+    percentage = (store * 100).toFixed(1)
     // store = actualTime.percentPassed;
   }
   
   
   var intervalID = window.setInterval(function () {
     returnTime() 
-    console.log(currentTime) 
    }, 1000)
 
 </script>
 
-<h1>{currentTime}
-  <br>
-    {store * 100}
-</h1>
-<Pie size={400} percentPassed={store} />
+<h1>It's now {currentTime}, we completed <span id='percentage'>{percentage}%</span> of the day</h1>
+<br>
+<Pie  size={size} percentPassed={store} />

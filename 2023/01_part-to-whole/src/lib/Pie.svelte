@@ -1,9 +1,8 @@
 <script>
-  export let size = 400;
-  // export let size = 200;
+  export let size = 600;
   export let percentPassed = 0;
   export let bgColor = 'gray';
-  export let fgColor = 'orange';
+  export let fgColor = '#32408F';
 
   $: viewBox = `0 0 ${size} ${size}`;
   
@@ -22,6 +21,5 @@
     fill={bgColor}
     stroke={fgColor}
     stroke-width={radius}
-    stroke-dasharray={dashArray}
-  />
+    stroke-dasharray={dashArray}/>
 </svg>
