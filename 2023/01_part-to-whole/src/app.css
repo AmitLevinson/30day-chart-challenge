@@ -142,18 +142,39 @@ body {
 
 
 #percentage {
-  text-decoration: underline;
+  /* text-decoration: underline; */
   color: #32408F;
   font-weight: bold;
-  text-decoration-thickness: 3px;
 }
 
+
 h1 {
-  font-size: 25px;
+  margin: 0 0 0.5rem 0;
+  font-size: 1.65rem;
+  font-weight: 600;
+  text-align: left;
+}
+
+h2 {
+  font-size: 1.35em;
+  text-align: left;
 }
 
 #app {
-  padding-top: 10%;
-  display: block;
-  text-align: center;
+  max-width: 500px;
+  margin: 0 auto;
+  padding: 1rem;
+  align-items: center;
 }
+
+.footer {
+  padding: 3em;
+  text-align: center;
+  color: gray;
+}
+
+a {
+  color: gray;
+  text-decoration: none;
+  font-style: italic;
+  }
