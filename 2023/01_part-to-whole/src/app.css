@@ -151,6 +151,7 @@ body {
 h1 {
   margin: 0 0 0.5rem 0;
   font-size: 1.65rem;
+  line-height: 1.1;
   font-weight: 600;
   text-align: left;
 }
@@ -171,6 +172,7 @@ h2 {
   padding: 3em;
   text-align: center;
   color: gray;
+  font-size: 0.9em;
 }
 
 a {
