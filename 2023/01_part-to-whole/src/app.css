@@ -150,26 +150,32 @@ body {
 
 h1 {
   margin: 0 0 0.5rem 0;
-  font-size: 1.65rem;
+  font-size: 1.75rem;
   line-height: 1.1;
   font-weight: 600;
   text-align: left;
 }
 
 h2 {
-  font-size: 1.35em;
+  font-size: 1.25em;
   text-align: left;
 }
 
+.legend {
+  text-align: left;
+  justify-content: center;
+  /* margin: 0 auto; */
+}
+
 #app {
-  max-width: 500px;
+  max-width: 550px;
   margin: 0 auto;
   padding: 1rem;
   align-items: center;
 }
 
 .footer {
-  padding: 3em;
+  padding: 2em;
   text-align: center;
   color: gray;
   font-size: 0.9em;

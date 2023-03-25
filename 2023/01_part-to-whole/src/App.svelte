@@ -1,10 +1,11 @@
 <script>
   /* inspired from https://svelte.dev/repl/e68bcf378d2c410d9c123fd309fc6dbb?version=3.42.4 */
   /* Svelte project template from https://github.com/connorrothschild/svelte-visualization-template */
+  import Legend from './Legend.svelte';
   let store = 0;
   let percentageDisplay = 0;
   let currentTime;
-  let size = 400;
+  let size = 500;
   
 
   let bgColor = 'gray';
@@ -22,14 +23,14 @@
     let time = now;
   
     const sod = new Date()
-    let startOfDay = sod.setUTCHours(0,0,0,0)
-  
+    sod.setHours(0,0,0,0)
+
     const eod = new Date()
-    let endOfDay = eod.setUTCHours(23,59,59,999)
+    eod.setHours(23,59,59,999)
   
     currentTime = time.getHours() + ":" + (time.getMinutes() < 10 ? "0" + time.getMinutes() : time.getMinutes()) + ":"
                    + (time.getSeconds() < 10 ? "0" + time.getSeconds() : time.getSeconds()) ;
-    store = (time - startOfDay) / (endOfDay - startOfDay);
+    store = (time - sod) / (eod - sod);
     percentageDisplay = (store * 100).toFixed(1)
   }
   
@@ -41,10 +42,18 @@
 
 </script>
 
-<h1><span id='percentage'>You completed {percentageDisplay}%</span> out of a full 24 hour day</h1>
+<h1><span id='percentage'>You completed {percentageDisplay}%</span> out of a 24 hour day</h1>
 <br>
 <h2>⌚ {currentTime}</h2>
 <div class="chart" bind:clientWidth={size}>
+<br>
+<div class="legend">
+    <Legend legendWidth={20} legendHeight={12} legendStyle={'fill:#32408F;'} />
+    Part of the day completed
+    <br>
+    <Legend legendWidth={20} legendHeight={12} legendStyle={'fill:gray;'} />
+    What's left of the day
+</div>
 <br>
 <svg width={size} height={size}>
   <circle r={radius} cx={radius} cy={radius} fill={bgColor}/>
