@@ -2,6 +2,7 @@
   /* inspired from https://svelte.dev/repl/e68bcf378d2c410d9c123fd309fc6dbb?version=3.42.4 */
   /* Svelte project template from https://github.com/connorrothschild/svelte-visualization-template */
   import Legend from './Legend.svelte';
+
   let store = 0;
   let percentageDisplay = 0;
   let currentTime;
@@ -71,3 +72,4 @@
   <a href='https://twitter.com/Amit_Levinson'>Amit Grinson</a> &#x2022; <a href ='https://twitter.com/30DayChartChall'>#30DayChartChallenge</a>
 </div>
 </div>
+
