@@ -1,0 +1,38 @@
+main {
+  font-family: sans-serif;
+  max-width: 550px;
+  margin: 0 auto;
+  padding: 1rem;
+  align-items: center;
+  direction: rtl;
+}
+
+
+h1 {
+  font-size: 1.75rem;
+  font-weight: 700;
+}
+
+h3 {
+  font-size: 1.2rem;
+  color: #333;
+  margin-bottom: 2rem;
+  font-weight: 300;
+}
+
+.title {
+  line-height: 1.2em;
+  margin-bottom: -30px;
+}
+
+
+footer {
+  padding-top: 10px;
+  font-size: 1rem;
+  color: #949494;
+}
+
+.ticks {
+  direction:rtl;
+  font-weight: 400;
+}
